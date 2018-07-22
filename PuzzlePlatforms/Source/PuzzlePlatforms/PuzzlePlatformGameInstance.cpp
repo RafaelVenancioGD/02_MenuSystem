@@ -19,9 +19,27 @@ void UPuzzlePlatformGameInstance::Init()
 	UE_LOG(LogTemp, Warning, TEXT("Found class%s"), *MenuClass->GetName());
 }
 
+void UPuzzlePlatformGameInstance::LoadMenu()
+{
+	if (!ensure(MenuClass != nullptr)) { return; }
+	UUserWidget* Menu = CreateWidget<UUserWidget>(this, MenuClass);
+	if (!ensure(Menu != nullptr)) { return; }
+	Menu->AddToViewport();
+
+	APlayerController* PlayerController = GetFirstLocalPlayerController();
+	if (!ensure(PlayerController != nullptr)) { return; }
+
+	FInputModeUIOnly InputModeData;
+	InputModeData.SetWidgetToFocus(Menu->TakeWidget());
+	InputModeData.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+
+	PlayerController->SetInputMode(InputModeData);
+	PlayerController->bShowMouseCursor = true;
+}
+
 void UPuzzlePlatformGameInstance::Host()
 {
-	UEngine *Engine = GetEngine();
+	UEngine* Engine = GetEngine();
 	if (!ensure(Engine != nullptr)) { return; }
 
 	Engine->AddOnScreenDebugMessage(0, 20, FColor::Green, TEXT("Hosting"));
@@ -35,7 +53,7 @@ void UPuzzlePlatformGameInstance::Host()
 
 void UPuzzlePlatformGameInstance::Join(const FString& Address)
 {
-	UEngine *Engine = GetEngine();
+	UEngine* Engine = GetEngine();
 	if (!ensure(Engine != nullptr)) { return; }
 
 	Engine->AddOnScreenDebugMessage(0, 20, FColor::Green, FString::Printf(TEXT("Joing %s"), *Address));
