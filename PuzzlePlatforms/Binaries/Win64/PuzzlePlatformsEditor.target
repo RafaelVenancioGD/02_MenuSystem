@@ -16,15 +16,15 @@
 	},
 	"BuildProducts": [
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-PuzzlePlatforms-2171.dll",
+			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-PuzzlePlatforms-6386.dll",
 			"Type": "DynamicLibrary"
 		},
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-PuzzlePlatforms-2171.pdb",
+			"Path": "$(ProjectDir)/Binaries/Win64/UE4Editor-PuzzlePlatforms-6386.pdb",
 			"Type": "SymbolFile"
 		},
 		{
-			"Path": "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-PuzzlePlatforms-2171.lib",
+			"Path": "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-PuzzlePlatforms-6386.lib",
 			"Type": "ImportLibrary"
 		},
 		{
